@@ -8,8 +8,6 @@ x_data = torch.from_numpy(xy[:, :-1])   # 取出前-1列 Feature
 y_data = torch.from_numpy(xy[:, [-1]])  # 取最后一列 label
  
 # design model using class
- 
- 
 class Model(torch.nn.Module):
     def __init__(self):
         super(Model, self).__init__()

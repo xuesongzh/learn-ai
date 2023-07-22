@@ -17,7 +17,7 @@ def loss(x, y):
 # 定义随机梯度，不是整体的损失
 # define the gradient function  sgd
 def gradient(x, y):
-    return 2*x*(x*w - y)
+    return 2*x*(x*w - y) 
 
 epoch_list = []
 loss_list = []

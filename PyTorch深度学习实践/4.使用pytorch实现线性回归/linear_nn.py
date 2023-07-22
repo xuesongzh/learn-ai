@@ -14,7 +14,7 @@ class LinearModel(torch.nn.Module):
         # 该线性层需要学习的参数是w和b  获取w/b的方式分别是~linear.weight/linear.bias
         self.linear = torch.nn.Linear(1, 1)
     
-    # 前馈
+    # 前馈，可调用对象
     def forward(self, x):
         y_pred = self.linear(x)
         return y_pred

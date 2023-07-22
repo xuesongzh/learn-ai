@@ -7,7 +7,7 @@ y_data = [2.0, 4.0, 6.0]
 
 # 定义torch
 w = torch.Tensor([1.0]) # w的初始值为1.0
-w.requires_grad = True  # 需要的计算梯度
+w.requires_grad = True  # 需要计算梯度
 
 # 前馈和损失的计算实际上就构建了计算图
 # 前馈
