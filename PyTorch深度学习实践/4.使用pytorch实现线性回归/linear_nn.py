@@ -28,7 +28,7 @@ model = LinearModel()
 criterion = torch.nn.MSELoss(reduction = 'sum')             # 使用MSE也可以自己设计
 optimizer = torch.optim.SGD(model.parameters(), lr = 0.01)  # 优化器 / model.parameters()自动完成参数的初始化操作
 
-# 3.循环计算前馈 反向传播 更新权值
+# 4.循环计算前馈 反向传播 更新权值
 for epoch in range(100):
     y_pred = model(x_data)              # forward:predict
     loss = criterion(y_pred, y_data)    # forward: loss

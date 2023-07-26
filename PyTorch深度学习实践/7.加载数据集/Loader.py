@@ -8,7 +8,7 @@ from torch.utils.data import DataLoader
 class DiabetesDataset(Dataset):                         # 抽象类DataSet
     def __init__(self, filepath):
         xy = np.loadtxt(filepath, delimiter=',', dtype=np.float32)
-        self.len = xy.shape[0]                          # shape(多少行，多少列)
+        self.len = xy.shape[0]                          # shape(多少行，多少列) (N,9)
         self.x_data = torch.from_numpy(xy[:, :-1])      
         self.y_data = torch.from_numpy(xy[:, [-1]])
 
@@ -19,13 +19,14 @@ class DiabetesDataset(Dataset):                         # 抽象类DataSet
         return self.len
  
 # dataset对象
-dataset = DiabetesDataset('../data/diabetes.csv')
+dataset = DiabetesDataset('../data/diabetes.csv.gz')
+print(len(dataset))
 
 # 使用DataLoader加载数据
 train_loader = DataLoader(dataset=dataset,  # dataSet对象 
-                            batch_size=32,  # 每个batch的条数
-                            shuffle=True,   # 是否打乱
-                            num_workers=4)  # 多线程一般设置为4和8
+                          batch_size=32,  # 每个batch的条数
+                          shuffle=True,   # 是否打乱
+                          num_workers=4)  # 多线程一般设置为4和8
  
 
 # design model using class

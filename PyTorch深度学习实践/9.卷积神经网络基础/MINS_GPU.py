@@ -13,12 +13,11 @@ transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1
 
 train_dataset = datasets.MNIST(root='../dataset/mnist/', train=True, download=False, transform=transform)
 train_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
+
 test_dataset = datasets.MNIST(root='../dataset/mnist/', train=False, download=False, transform=transform)
 test_loader = DataLoader(test_dataset, shuffle=False, batch_size=batch_size)
  
 # design model using class
- 
- 
 class Net(torch.nn.Module):
     def __init__(self):
         super(Net, self).__init__()

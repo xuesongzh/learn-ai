@@ -8,7 +8,7 @@ input = [3,4,6,5,7,
 # 使用view固定为一个张量B×C×W×H
 input = torch.Tensor(input).view(1, 1, 5, 5)
 
-# 定义卷积
+# 定义卷积 padding = kernel_size / 2
 conv_layer = torch.nn.Conv2d(1, 1, kernel_size=3, padding=1, bias=False)
 
 # 将一个向量转化为张量赋值给kernel卷积核 

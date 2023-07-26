@@ -1,9 +1,11 @@
 import numpy as np
 import torch
 import matplotlib.pyplot as plt
+import os
  
 # prepare dataset
-xy = np.loadtxt('../data/diabetes.csv', delimiter=',', dtype=np.float32)
+#xy = np.loadtxt(os.path.abspath('../data/diabetes.csv.gz'), delimiter=',', dtype=np.float32)
+xy = np.loadtxt('../data/diabetes.csv.gz', delimiter=',', dtype=np.float32)
 x_data = torch.from_numpy(xy[:, :-1])   # 取出前-1列 Feature
 y_data = torch.from_numpy(xy[:, [-1]])  # 取最后一列 label
  
@@ -22,7 +24,6 @@ class Model(torch.nn.Module):
         x = self.sigmoid(self.linear3(x))       # y hat
         return x
  
- 
 model = Model()
  
 # construct loss and optimizer
@@ -34,15 +35,18 @@ epoch_list = []
 loss_list = []
 # training cycle forward, backward, update
 for epoch in range(100):
+    # forward
     y_pred = model(x_data)
     loss = criterion(y_pred, y_data)
     print(epoch, loss.item())
     epoch_list.append(epoch)
     loss_list.append(loss.item())
  
+    # backward
     optimizer.zero_grad()
     loss.backward()
- 
+
+    # update
     optimizer.step()
  
  

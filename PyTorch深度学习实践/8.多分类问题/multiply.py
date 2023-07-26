@@ -1,5 +1,5 @@
 import torch
-# 用于数据集的加载
+# 用于数据集的加载cd 
 from torchvision import transforms
 from torchvision import datasets
 from torch.utils.data import DataLoader
@@ -14,10 +14,10 @@ batch_size = 64
 transform = transforms.Compose([transforms.ToTensor(),  # Convert the PIL Image to Tensor.
                                 transforms.Normalize((0.1307,), (0.3081,))]) 
 
-train_dataset = datasets.MNIST(root='../data/mnist/', train=True, download=True, transform=transform)
+train_dataset = datasets.MNIST(root='../data/mnist/', train=True, download=False, transform=transform)
 train_loader = DataLoader(train_dataset, shuffle=True, batch_size=batch_size)
 
-test_dataset = datasets.MNIST(root='../data/mnist/', train=False, download=True, transform=transform)
+test_dataset = datasets.MNIST(root='../data/mnist/', train=False, download=False, transform=transform)
 test_loader = DataLoader(test_dataset, shuffle=False, batch_size=batch_size)
 
 # 设计模型类
@@ -33,7 +33,7 @@ class Net(torch.nn.Module):
  
     # 前馈
     def forward(self, x):
-        x = x.view(-1, 784)     # -1其实就是自动获取mini_batch,使用wiew展开张量为向量
+        x = x.view(-1, 784)     # -1其实就是自动获取mini_batch size,使用wiew展开张量为向量 (N,1,28,28)
         x = F.relu(self.l1(x))
         x = F.relu(self.l2(x))
         x = F.relu(self.l3(x))
@@ -76,7 +76,7 @@ def test():
             outputs = model(images)
             # torch.max的返回值有两个，第一个是每一行的最大值是多少，第二个是每一行最大值的下标(索引)是多少。
             _, predicted = torch.max(outputs.data, dim=1) # dim = 1 列是第0个维度，行是第1个维度
-            total += labels.size(0)
+            total += labels.size(0) # batch size
             correct += (predicted == labels).sum().item() # 张量之间的比较运算
     print('accuracy on test set: %d %% ' % (100*correct/total))
  
