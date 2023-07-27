@@ -1,5 +1,5 @@
 import torch
-# 用于数据集的加载cd 
+# 用于数据集的加载
 from torchvision import transforms
 from torchvision import datasets
 from torch.utils.data import DataLoader
