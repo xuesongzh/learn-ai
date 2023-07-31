@@ -27,7 +27,7 @@ for epoch in range(100):
         # 每一样本都进行梯度计算和权值更新
         grad = gradient(x,y)
         w = w - 0.01*grad    # update weight by every grad of sample of training set
-        print("\tgrad:", x, y,grad)
+        print("\tgrad:", x, y, grad)
         l = loss(x,y)
     print("progress:",epoch,"w=",w,"loss=",l)
     epoch_list.append(epoch)

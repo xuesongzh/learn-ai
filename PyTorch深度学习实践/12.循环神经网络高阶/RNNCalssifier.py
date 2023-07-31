@@ -10,7 +10,6 @@ import csv
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-
 # 参数
 HIDDEN_SIZE = 100
 BATCH_SIZE = 256
@@ -18,7 +17,6 @@ N_LAYER = 2
 N_EPOCHS = 100
 N_CHARS = 128
 USE_GPU = False
-
 
 # 准备数据
 class NameDataset(Dataset):

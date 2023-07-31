@@ -12,7 +12,7 @@ def forward(x):
 # 损失
 def loss(x,y):
     y_pred = forward(x)
-    return (y_pred-y)*(y_pred-y)
+    return (y_pred - y)**2
 
 # 记录训练参数
 mse_list = []
